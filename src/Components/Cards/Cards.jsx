@@ -1,4 +1,4 @@
-import Card from '../Card/Card'
+import Card from '../Card/Card';
 
 export default function Cards({ characters, onClose }) {
   return (
@@ -14,12 +14,12 @@ export default function Cards({ characters, onClose }) {
               species={species}
               gender={gender}
               image={image}
-              origin={origin.name}
+              origin={origin}
               onClose={onClose}
             />
-          )
+          );
         }
       )}
     </div>
-  )
+  );
 }

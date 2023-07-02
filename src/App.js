@@ -3,13 +3,28 @@ import Cards from './Components/Cards/Cards';
 import Nav from './Components/Nav/Nav';
 import About from './Components/About/About';
 import Detail from './Components/Detail/Detail';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import Form from './Components/Form/Form';
+
+const EMAIL = 'test@test.com';
+const PASSWORD = 'test123';
 
 function App() {
   const [characters, setCharacters] = useState([]);
+  const [access, setAccess] = useState(false);
+  const location = useLocation();
+  const shouldShowNav = location.pathname !== '/';
+  const navigate = useNavigate();
+
+  const login = (userData) => {
+    if (userData.email === EMAIL && userData.password === PASSWORD) {
+      setAccess(true);
+      navigate('/home');
+    }
+  };
+
   const onSearch = (id) => {
     for (let i = 0; i < characters.length; i++) {
       if (Number(id) === characters[i].id)
@@ -55,9 +70,13 @@ function App() {
     setCharacters(charactersFiltered);
     // cuando hago click en la cruz, reseteo el estado local a todos los elementos que no contengan el ID
   };
+
+  useEffect(() => {
+    !access && navigate('/');
+  }, [access]);
   return (
     <div>
-      <Nav onSearch={onSearch} randomSearch={randomSearch} />
+      {shouldShowNav && <Nav onSearch={onSearch} randomSearch={randomSearch} />}
       <Routes>
         <Route
           path='home'
@@ -65,7 +84,7 @@ function App() {
         />
         <Route path='/about' element={<About />} />
         <Route path='/detail/:id' element={<Detail />} />
-        <Route path='/' element={<Form />} />
+        <Route path='/' element={<Form login={login} />} />
       </Routes>
     </div>
   );
