@@ -1,11 +1,15 @@
 import './App.css';
 import Cards from './Components/Cards/Cards';
 import Nav from './Components/Nav/Nav';
+import About from './Components/About/About';
+import Detail from './Components/Detail/Detail';
 import { useState } from 'react';
 import axios from 'axios';
+import { Routes, Route } from 'react-router-dom';
+import Form from './Components/Form/Form';
 
 function App() {
-  const [characters, setCharacters] = useState();
+  const [characters, setCharacters] = useState([]);
   const onSearch = (id) => {
     for (let i = 0; i < characters.length; i++) {
       if (Number(id) === characters[i].id)
@@ -53,8 +57,16 @@ function App() {
   };
   return (
     <div>
-      <Nav onSearch={onSearch} randomSearch={randomSearch} />;
-      <Cards characters={characters} onClose={onClose} />;
+      <Nav onSearch={onSearch} randomSearch={randomSearch} />
+      <Routes>
+        <Route
+          path='home'
+          element={<Cards characters={characters} onClose={onClose} />}
+        />
+        <Route path='/about' element={<About />} />
+        <Route path='/detail/:id' element={<Detail />} />
+        <Route path='/' element={<Form />} />
+      </Routes>
     </div>
   );
 }

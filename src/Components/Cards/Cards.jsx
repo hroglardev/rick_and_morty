@@ -1,4 +1,4 @@
-import Card from '../Card/Card';
+import Card from '../Card/Card'
 
 export default function Cards({ characters, onClose }) {
   return (
@@ -17,9 +17,9 @@ export default function Cards({ characters, onClose }) {
               origin={origin.name}
               onClose={onClose}
             />
-          );
+          )
         }
       )}
     </div>
-  );
+  )
 }
