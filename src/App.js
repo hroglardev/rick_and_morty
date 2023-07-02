@@ -7,6 +7,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import Form from './Components/Form/Form';
+import Favourites from './Components/Favourites/Favourites';
 
 const EMAIL = 'test@test.com';
 const PASSWORD = 'test123';
@@ -76,7 +77,13 @@ function App() {
   }, [access]);
   return (
     <div>
-      {shouldShowNav && <Nav onSearch={onSearch} randomSearch={randomSearch} />}
+      {shouldShowNav && (
+        <Nav
+          onSearch={onSearch}
+          randomSearch={randomSearch}
+          setAccess={setAccess}
+        />
+      )}
       <Routes>
         <Route
           path='home'
@@ -85,6 +92,7 @@ function App() {
         <Route path='/about' element={<About />} />
         <Route path='/detail/:id' element={<Detail />} />
         <Route path='/' element={<Form login={login} />} />
+        <Route path='favourites' element={<Favourites />} />
       </Routes>
     </div>
   );
