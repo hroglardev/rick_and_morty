@@ -1,6 +1,7 @@
 import SearchBar from '../SearchBar/SearchBar';
 import { Link, NavLink } from 'react-router-dom';
 import style from './Nav.module.css';
+import NavMobile from './NavMobile/NavMobile';
 
 const Nav = ({ onSearch, randomSearch, setAccess }) => {
   const handleLogOut = () => {
@@ -16,8 +17,12 @@ const Nav = ({ onSearch, randomSearch, setAccess }) => {
           className={style.image}
         />
       </div>
+      <SearchBar onSearch={onSearch} />
+      <NavMobile
+        randomSearch={randomSearch}
+        handleLogOut={handleLogOut}
+      ></NavMobile>
       <nav className={style.navContainer}>
-        <SearchBar onSearch={onSearch} />
         <button className={style.button}>
           <NavLink to='/home' className={style.link}>
             Home
@@ -31,7 +36,6 @@ const Nav = ({ onSearch, randomSearch, setAccess }) => {
             About
           </NavLink>
         </button>
-
         <button className={style.button}>
           <NavLink to='/favourites' className={style.link}>
             Favourites

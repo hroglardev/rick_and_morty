@@ -1,35 +1,59 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
 .wrapper {
   display: flex;
-  margin-bottom: 10rem;
+
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.logo {
+  margin-top: 2rem;
+  margin-left: 2rem;
+  margin-bottom: 2rem;
 }
 
 .navContainer {
   display: flex;
-  margin: 2rem 2rem 0 0;
+  justify-content: flex-end;
+  align-items: center;
   flex-grow: 1;
   justify-content: flex-end;
+  gap: 3%;
+  margin-right: 10px;
 }
 
 .image {
-  height: 6em;
-  flex-grow: 0;
-  left: 0;
-  margin: 2rem;
+  width: 250px;
 }
 
 .button {
-  padding: 1rem;
   border: 2px solid rgb(4, 61, 53);
   color: #fff;
-  border-radius: 10px;
-  font-weight: 800;
+  border-radius: 7px;
   text-transform: uppercase;
   transition: 0.5s;
   transition-property: box-shadow;
   background: rgb(12, 171, 147);
-  height: 4em;
-  width: 10em;
-  margin-left: 1rem;
+  flex-shrink: 0;
+  height: 3rem;
+  padding: 0 1rem 0 1rem;
+
+  font-weight: bold;
+}
+
+.link {
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+.link:visited {
+  color: #fff;
 }
 
 .button:hover {
@@ -37,10 +61,11 @@
     0 0 50px rgb(12, 171, 147), 0 0 100px rgb(12, 171, 147);
   cursor: pointer;
 }
-.link {
-  text-decoration: none;
-  font-size: 0.9rem;
-}
-.link:visited {
-  color: #fff;
+
+@media screen and (max-width: 1247px) {
+  /* CSS rules for screens smaller than or equal to 1247px */
+  /* Place your styles here */
+  .navContainer {
+    display: none;
+  }
 }

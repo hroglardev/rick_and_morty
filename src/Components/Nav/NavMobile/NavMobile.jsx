@@ -1,10 +1,19 @@
-import { Link, NavLink } from 'react-router-dom';
+import { useState } from 'react';
+import { HiMenu } from 'react-icons/hi';
+import style from './NavMobile.module.css';
+import { NavLink } from 'react-router-dom';
 
-const NavBig = ({ onSearch, randomSearch, handleLogOut }) => {
+const NavMobile = ({ randomSearch, handleLogOut }) => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
-    <div>
-      <nav className={style.navContainer}>
-        <SearchBar onSearch={onSearch} />
+    <div className={style.wrapper}>
+      <HiMenu className={style.hamburger} onClick={toggleMenu} />
+      <div className={`${style.menu} ${isMenuOpen ? style.open : ''}`}>
         <button className={style.button}>
           <NavLink to='/home' className={style.link}>
             Home
@@ -18,7 +27,6 @@ const NavBig = ({ onSearch, randomSearch, handleLogOut }) => {
             About
           </NavLink>
         </button>
-
         <button className={style.button}>
           <NavLink to='/favourites' className={style.link}>
             Favourites
@@ -29,9 +37,9 @@ const NavBig = ({ onSearch, randomSearch, handleLogOut }) => {
             Log Out
           </NavLink>
         </button>
-      </nav>
+      </div>
     </div>
   );
 };
 
-export default NavBig;
+export default NavMobile;

@@ -49,14 +49,16 @@ const Card = ({
           X
         </button>
       </div>
-      <img src={image} alt={name} className={style.image} />
-      <NavLink to={`/detail/${id}`} className={style.link}>
-        <h2 className={style.charInfo}>{name}</h2>
-      </NavLink>
-      <h2 className={style.charInfo}>{status} </h2>
-      <h2 className={style.charInfo}>{species}</h2>
-      <h2 className={style.charInfo}>{gender} </h2>
-      <h2 className={style.charInfo}>{origin.name} </h2>
+      <div className={style.charInfoContainer}>
+        <img src={image} alt={name} className={style.image} />
+        <NavLink to={`/detail/${id}`} className={style.link}>
+          <h2 className={style.charInfo}>{name}</h2>
+        </NavLink>
+        <h2 className={style.charInfo}>{status} </h2>
+        <h2 className={style.charInfo}>{species}</h2>
+        <h2 className={style.charInfo}>{gender} </h2>
+        <h2 className={style.charInfo}>{origin.name} </h2>
+      </div>
     </div>
   );
 };

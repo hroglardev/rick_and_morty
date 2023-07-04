@@ -58,7 +58,7 @@ const Favourites = ({ myFavourites }) => {
               species={favourite.species}
               gender={favourite.gender}
               image={favourite.image}
-              origin={favourite.origin.name}
+              origin={favourite.origin}
             />
           );
         })}
