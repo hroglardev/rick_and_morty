@@ -1,21 +1,8 @@
-import SearchBar from '../SearchBar/SearchBar';
 import { Link, NavLink } from 'react-router-dom';
-import style from './Nav.module.css';
 
-const Nav = ({ onSearch, randomSearch, setAccess }) => {
-  const handleLogOut = () => {
-    setAccess(false);
-  };
-
+const NavBig = ({ onSearch, randomSearch, handleLogOut }) => {
   return (
-    <div className={style.wrapper}>
-      <div className={style.logo}>
-        <img
-          src='https://www.pngplay.com/wp-content/uploads/14/Rick-And-Morty-Logo-Transparent-File.png'
-          alt=''
-          className={style.image}
-        />
-      </div>
+    <div>
       <nav className={style.navContainer}>
         <SearchBar onSearch={onSearch} />
         <button className={style.button}>
@@ -47,4 +34,4 @@ const Nav = ({ onSearch, randomSearch, setAccess }) => {
   );
 };
 
-export default Nav;
+export default NavBig;

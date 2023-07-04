@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import style from './Detail.module.css';
 
 const Detail = () => {
   const { id } = useParams();
@@ -19,16 +20,21 @@ const Detail = () => {
   }, [id]);
 
   return (
-    <div>
-      <div>
-        <h2>{character?.name}</h2>
-        <h2>{character?.status}</h2>
-        <h2>{character?.species}</h2>
-        <h2>{character?.gender}</h2>
-        <h2>{character?.origin?.name}</h2>
+    <div className={style.wrapper}>
+      <div className={style.card}></div>
+      <div classname={style.textWrapper}>
+        <h2 className={style.text}>Name: {character?.name}</h2>
+        <h2 className={style.text}>Status: {character?.status}</h2>
+        <h2 className={style.text}>Species: {character?.species}</h2>
+        <h2 className={style.text}>Gender: {character?.gender}</h2>
+        <h2 className={style.text}>Origin: {character?.origin?.name}</h2>
       </div>
-      <div>
-        <img src={character?.image} alt={character?.name} />
+      <div className={style.imageWrapper}>
+        <img
+          src={character?.image}
+          alt={character?.name}
+          className={style.image}
+        />
       </div>
     </div>
   );

@@ -76,7 +76,7 @@ function App() {
     !access && navigate('/');
   }, [access]);
   return (
-    <div>
+    <div className='wrapper'>
       {shouldShowNav && (
         <Nav
           onSearch={onSearch}
